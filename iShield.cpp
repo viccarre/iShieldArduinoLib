@@ -442,6 +442,29 @@ bool iShield::isYPressed(){
 	return y;
 }
 //
+//Weather
+void iShield::setTemperature(int temp){
+	if ( ble_connected() )
+  {
+      ble_write(0x06);
+      ble_write(0x01);
+      ble_write((char)temp); 
+  }
+
+  ble_do_events();
+}
+
+void iShield::setHumidity(int hum){
+	if ( ble_connected() )
+  {
+      ble_write(0x06);
+      ble_write(0x02);
+      ble_write((char)hum); 
+  }
+
+  ble_do_events();
+}
+///////////
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }

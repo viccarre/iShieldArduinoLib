@@ -83,6 +83,9 @@ public:
 	bool isBPressed();
 	bool isXPressed();
 	bool isYPressed();
+	//Weather
+	void setTemperature(int temp);
+	void setHumidity(int hum);
 	
 
 private:
