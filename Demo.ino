@@ -18,7 +18,9 @@ void loop()
 {
 
 	//myiShield.getInbox();
-	myiShield.setTemperature(15);
-	myiShield.setHumidity(23);
+	myiShield.LEDOn();
+	delay(1000);
+	myiShield.LEDOff();
+	delay(1000);
 	
 }

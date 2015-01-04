@@ -14,8 +14,8 @@
 //#include "sliders.h"
 //#include "RGB.h"
 //#include "gamepad.h"
-#include "thermometer.h"
-#include "LED.h"
+//#include "thermometer.h"
+//#include "LED.h"
 #include "sevenSegment.h"
 #include "analogSignals.h"
 #include "accelerometer.h"
@@ -32,8 +32,8 @@ public:
 	//sliders Sliders;
 	//RGB rgb;
 	//gamepad Gamepad;
-	thermometer Thermometer;
-	LED led;
+	//thermometer Thermometer;
+	//LED led;
 	sevenSegment SevenSegment;
 	analogSignals AnalogSignals;
 	accelerometer Accelerometer;
@@ -86,6 +86,9 @@ public:
 	//Weather
 	void setTemperature(int temp);
 	void setHumidity(int hum);
+	//LED
+	void LEDOn();
+	void LEDOff();
 	
 
 private:
@@ -126,6 +129,7 @@ private:
 	bool b;
 	bool x;
 	bool y;
+
 	//Console
 	String messageIn;
 };

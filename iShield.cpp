@@ -465,6 +465,32 @@ void iShield::setHumidity(int hum){
   ble_do_events();
 }
 ///////////
+
+//LED
+void iShield::LEDOn(){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x07);
+      ble_write(0x01);
+      ble_write(0x01); 
+  }
+
+  ble_do_events();
+}
+
+void iShield::LEDOff(){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x07);
+      ble_write(0x01);
+      ble_write(0x00); 
+  }
+
+  ble_do_events();
+}
+////
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }
