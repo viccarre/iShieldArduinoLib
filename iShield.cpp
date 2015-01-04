@@ -4,11 +4,17 @@ iShield::iShield(){
 	RedValue = 0x00;
 	GreenValue = 0x00;
 	BlueValue = 0x00;
+	up = false;
+	down = false;
+	left = false;
+	right = false;
+	a = false;
+	b = false;
+	x = false;
+	y = false;
 };
 
 /* iShield Methods*/
-
-
 
 void iShield::getInbox(){
 	
@@ -41,7 +47,7 @@ void iShield::getInbox(){
 		break;
 			case 0x05:
 			//Call the process Input for gamepad
-			//Gamepad.processIncomingData(data1, data2);
+			gamePadProcessIncomingData(data1, data2);
 		break;
 			case 0x0A:
 			//Call the process Input for accelerometer
@@ -354,6 +360,88 @@ int iShield::getBlueValue(){
 	return BlueValue;
 }
 ///
+//Gamepad
+void iShield::gamePadProcessIncomingData(int data1, int data2){
+	
+	switch(data1){
+			case 0x01:
+			if(data2 == 0x01)
+				left = true;
+			else
+				left = false;
+		break;
+			case 0x02:
+			if(data2 == 0x01)
+				right = true;
+			else
+				right = false;
+		break;
+			case 0x03:
+			if(data2 == 0x01)
+				down = true;
+			else
+				down = false;
+		break;
+			case 0x04:
+			if(data2 == 0x01)
+				up = true;
+			else
+				up = false;
+		break;
+			case 0x05:
+			if(data2 == 0x01)
+				a = true;
+			else
+				a = false;
+		break;
+			case 0x06:
+			if(data2 == 0x01)
+				b = true;
+			else
+				b = false;
+		break;
+			case 0x07:
+			if(data2 == 0x01)
+				x = true;
+			else
+				x = false;
+		break;
+			case 0x08:
+			if(data2 == 0x01)
+				y = true;
+			else
+				y = false;
+		break;
+	}
+	
+}
+
+bool iShield::isUpPressed(){
+	return up;
+}
+
+bool iShield::isDownPressed(){
+	return down;
+}
+bool iShield::isLeftPressed(){
+	return left;
+}
+bool iShield::isRightPressed(){
+	return right;
+}
+bool iShield::isAPressed(){
+	return a;
+}
+bool iShield::isBPressed(){
+	return b;
+}
+bool iShield::isXPressed(){
+	return x;
+}
+bool iShield::isYPressed(){
+	return y;
+}
+//
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }

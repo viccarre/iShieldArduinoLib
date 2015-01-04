@@ -18,11 +18,29 @@ void loop()
 {
 
 	myiShield.getInbox();
-	Serial.print("Red Value:");
-	Serial.println(myiShield.getRedValue());
-	Serial.print("Green Value:");
-	Serial.println(myiShield.getGreenValue());
-	Serial.print("Blue Value:");
-	Serial.println(myiShield.getBlueValue());
+	if(myiShield.isUpPressed() == true){
+		Serial.println("true, Up pressed");
+	}
+			if(myiShield.isDownPressed() == true){
+		Serial.println("true, Down pressed");
+	}
+			if(myiShield.isLeftPressed() == true){
+		Serial.println("true, Left pressed");
+	}
+			if(myiShield.isRightPressed() == true){
+		Serial.println("true, Right pressed");
+	}
+			if(myiShield.isAPressed() == true){
+		Serial.println("true, A pressed");
+	}
+			if(myiShield.isBPressed() == true){
+		Serial.println("true, B pressed");
+	}
+			if(myiShield.isXPressed() == true){
+		Serial.println("true, X pressed");
+	}
+			if(myiShield.isYPressed() == true){
+		Serial.println("true, Y pressed");
+	}
 	
 }

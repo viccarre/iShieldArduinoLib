@@ -13,7 +13,7 @@
 //#include "keypad.h"
 //#include "sliders.h"
 //#include "RGB.h"
-#include "gamepad.h"
+//#include "gamepad.h"
 #include "thermometer.h"
 #include "LED.h"
 #include "sevenSegment.h"
@@ -31,7 +31,7 @@ public:
 	//keypad Keypad;
 	//sliders Sliders;
 	//RGB rgb;
-	gamepad Gamepad;
+	//gamepad Gamepad;
 	thermometer Thermometer;
 	LED led;
 	sevenSegment SevenSegment;
@@ -73,6 +73,16 @@ public:
 	int getRedValue();
 	int getGreenValue();
 	int getBlueValue();
+	//Gamepad
+	void gamePadProcessIncomingData(int data1, int data2);
+	bool isUpPressed();
+	bool isDownPressed();
+	bool isLeftPressed();
+	bool isRightPressed();
+	bool isAPressed();
+	bool isBPressed();
+	bool isXPressed();
+	bool isYPressed();
 	
 
 private:
@@ -104,6 +114,15 @@ private:
 	int RedValue;
 	int GreenValue;
 	int BlueValue;
+	//Gamepad
+	bool up;
+	bool down;
+	bool left;
+	bool right;
+	bool a;
+	bool b;
+	bool x;
+	bool y;
 	//Console
 	String messageIn;
 };
