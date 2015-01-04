@@ -10,7 +10,7 @@
 
 //iShield Libraries
 //#include "buttonSwitches.h"
-#include "keypad.h"
+//#include "keypad.h"
 #include "sliders.h"
 #include "RGB.h"
 #include "gamepad.h"
@@ -28,7 +28,7 @@ public:
 	char getOutbox();
 	//button Buttons;
 	//switches Switches;
-	keypad Keypad;
+	//keypad Keypad;
 	sliders Sliders;
 	RGB rgb;
 	gamepad Gamepad;
@@ -57,6 +57,12 @@ public:
 	bool isSwitch4On();
 	bool isSwitch5On();
 	bool isSwitch6On();
+	
+	//Keypad
+	void keypadProcessIncomingData(char data1, char data2);
+	char getData();
+	bool keypadWasPressed();
+	
 
 private:
 	
@@ -74,6 +80,9 @@ private:
 	bool switch4;
 	bool switch5;
 	bool switch6;
+	//Keypad
+	char currentData;
+	bool keypadPressed;
 	//Console
 	String messageIn;
 };

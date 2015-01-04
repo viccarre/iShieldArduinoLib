@@ -188,6 +188,96 @@ void iShield::readConsole(){
   }
 }
 
+//Keypad Methods
+
+void iShield::keypadProcessIncomingData(char data1, char data2){
+	
+	Serial.println(data1);
+	Serial.println(data2);
+	
+	switch(data1){
+			case 0x01:
+				currentData = '1';
+				keypadPressed = true;
+		break;
+			case 0x02:
+				currentData = '2';
+				keypadPressed = true;
+		break;
+			case 0x03:
+				currentData = '3';
+				keypadPressed = true;
+		break;
+			case 0x04:
+				currentData = '4';
+				keypadPressed = true;
+		break;
+			case 0x05:
+				currentData = '5';
+				keypadPressed = true;
+		break;
+			case 0x06:
+				currentData = '6';
+				keypadPressed = true;
+		break;
+			case 0x07:
+				currentData = '7';
+				keypadPressed = true;
+		break;
+			case 0x08:
+				currentData = '8';
+				keypadPressed = true;
+		break;
+			case 0x09:
+				currentData = '9';
+				keypadPressed = true;
+		break;
+			case 0x00:
+				currentData = '0';
+				keypadPressed = true;
+		break;
+			case 0x13:
+				currentData = '.';
+				keypadPressed = true;
+		break;
+			case 0x14:
+				currentData = 'i';
+				keypadPressed = true;
+		break;
+			case 0x15:
+				currentData = 'e';
+				keypadPressed = true;
+		break;
+			case 0x0A:
+				currentData = 'a';
+				keypadPressed = true;
+		break;
+			case 0x0B:
+				currentData = 'b';
+				keypadPressed = true;
+		break;
+			case 0x0C:
+				currentData = 'c';
+				keypadPressed = true;
+		break;
+		}
+	
+}
+
+bool iShield::keypadWasPressed(){
+	return keypadPressed;
+}
+
+char iShield::getData(){
+	if(keypadPressed == true){
+		keypadPressed = false;
+		return currentData;
+	}else{
+		return '/';
+		}
+}
+
+/////////////
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }

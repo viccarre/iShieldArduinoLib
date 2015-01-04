@@ -38,5 +38,24 @@ void loop()
 	Serial.println("6, button pressed");
 	}
 	
+		if(myiShield.isSwitch1On() == true){
+	Serial.println("true, switch1 is On");
+	}
+		if(myiShield.isSwitch2On() == true){
+	Serial.println("true, switch2 is On");
+	}
+		if(myiShield.isSwitch3On() == true){
+	Serial.println("true, switch3 is On");
+	}
+		if(myiShield.isSwitch4On() == true){
+	Serial.println("true, switch4 is On");
+	}
+		if(myiShield.isSwitch5On() == true){
+	Serial.println("true, switch5 is On");
+	}
+		if(myiShield.isSwitch6On() == true){
+	Serial.println("true, switch6 is On");
+	}
+	
 
 }
