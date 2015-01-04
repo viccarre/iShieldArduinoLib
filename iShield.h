@@ -11,7 +11,7 @@
 //iShield Libraries
 //#include "buttonSwitches.h"
 //#include "keypad.h"
-#include "sliders.h"
+//#include "sliders.h"
 #include "RGB.h"
 #include "gamepad.h"
 #include "thermometer.h"
@@ -29,7 +29,7 @@ public:
 	//button Buttons;
 	//switches Switches;
 	//keypad Keypad;
-	sliders Sliders;
+	//sliders Sliders;
 	RGB rgb;
 	gamepad Gamepad;
 	thermometer Thermometer;
@@ -57,12 +57,17 @@ public:
 	bool isSwitch4On();
 	bool isSwitch5On();
 	bool isSwitch6On();
-	
 	//Keypad
 	void keypadProcessIncomingData(char data1, char data2);
-	char getData();
+	char getKeypadData();
 	bool keypadWasPressed();
-	
+	//Sliders
+	void slidersProcessIncomingData(char data1, char data2);
+	short getSliderAValue();
+	short getSliderBValue();
+	short getSliderCValue();
+	short getSliderDValue();
+	short getSliderEValue();
 
 private:
 	
@@ -83,6 +88,12 @@ private:
 	//Keypad
 	char currentData;
 	bool keypadPressed;
+	//Sliders
+	short sliderAValue;
+	short sliderBValue;
+	short sliderCValue;
+	short sliderDValue;
+	short sliderEValue;
 	//Console
 	String messageIn;
 };

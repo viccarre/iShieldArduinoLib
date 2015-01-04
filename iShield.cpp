@@ -29,7 +29,7 @@ void iShield::getInbox(){
 		break;
 			case 0x03:
 			//Call the process Input for Sliders
-			//Sliders.processIncomingData(data1, data2);
+			slidersProcessIncomingData(data1, data2);
 		break;
 			case 0x04:
 			//Call the process Input for RGB
@@ -278,6 +278,48 @@ char iShield::getKeypadData(){
 }
 
 /////////////
+//Sliders Methods
+void iShield::slidersProcessIncomingData(char data1,char data2){
+	
+	switch(data1){
+			case 0x01://Request from SliderA
+			sliderAValue = data2;
+		break;
+			case 0x02://Request from SliderA
+			sliderBValue = data2;
+		break;
+			case 0x03://Request from SliderA
+			sliderCValue = data2;
+		break;
+			case 0x04://Request from SliderA
+			sliderDValue = data2;
+		break;
+			case 0x05://Request from SliderA
+			sliderEValue = data2;
+		break;
+	}
+}
+
+short iShield::getSliderAValue(){
+	return sliderAValue;
+}
+
+short iShield::getSliderBValue(){
+	return sliderBValue;
+}
+
+short iShield::getSliderCValue(){
+	return sliderCValue;
+}
+
+short iShield::getSliderDValue(){
+	return sliderDValue;
+}
+
+short iShield::getSliderEValue(){
+	return sliderEValue;
+}
+///////////
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }
