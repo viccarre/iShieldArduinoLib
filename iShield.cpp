@@ -25,7 +25,7 @@ void iShield::getInbox(){
 		break;
 			case 0x02:
 			//Call the process Input for Keypad
-			//Keypad.processIncomingData(data1, data2);
+			keypadProcessIncomingData(data1, data2);
 		break;
 			case 0x03:
 			//Call the process Input for Sliders
@@ -268,7 +268,7 @@ bool iShield::keypadWasPressed(){
 	return keypadPressed;
 }
 
-char iShield::getData(){
+char iShield::getKeypadData(){
 	if(keypadPressed == true){
 		keypadPressed = false;
 		return currentData;
