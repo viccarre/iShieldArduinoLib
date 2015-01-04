@@ -8,15 +8,6 @@
 #include <Nordic_nRF8001.h>
 #include <RBL_nRF8001.h>
 
-//iShield Libraries
-//#include "buttonSwitches.h"
-//#include "keypad.h"
-//#include "sliders.h"
-//#include "RGB.h"
-//#include "gamepad.h"
-//#include "thermometer.h"
-//#include "LED.h"
-#include "sevenSegment.h"
 #include "analogSignals.h"
 #include "accelerometer.h"
 
@@ -26,15 +17,6 @@ public:
 	iShield();
 	void getInbox();
 	char getOutbox();
-	//button Buttons;
-	//switches Switches;
-	//keypad Keypad;
-	//sliders Sliders;
-	//RGB rgb;
-	//gamepad Gamepad;
-	//thermometer Thermometer;
-	//LED led;
-	sevenSegment SevenSegment;
 	analogSignals AnalogSignals;
 	accelerometer Accelerometer;
 	void readConsole();
@@ -89,6 +71,8 @@ public:
 	//LED
 	void LEDOn();
 	void LEDOff();
+	//SevenSegments
+	void SevenSegmentsSetChar(char myChar);
 	
 
 private:

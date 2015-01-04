@@ -17,10 +17,25 @@ void setup()
 void loop()
 {
 
-	//myiShield.getInbox();
-	myiShield.LEDOn();
+	myiShield.SevenSegmentsSetChar('1');
 	delay(1000);
-	myiShield.LEDOff();
+		myiShield.SevenSegmentsSetChar('2');
+	delay(1000);
+		myiShield.SevenSegmentsSetChar('3');
+	delay(1000);
+		myiShield.SevenSegmentsSetChar('4');
+	delay(1000);
+		myiShield.SevenSegmentsSetChar('5');
+	delay(1000);
+		myiShield.SevenSegmentsSetChar('6');
+	delay(1000);
+		myiShield.SevenSegmentsSetChar('7');
+	delay(1000);
+		myiShield.SevenSegmentsSetChar('8');
+	delay(1000);
+		myiShield.SevenSegmentsSetChar('9');
+	delay(1000);
+		myiShield.SevenSegmentsSetChar('0');
 	delay(1000);
 	
 }

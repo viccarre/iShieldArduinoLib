@@ -491,6 +491,19 @@ void iShield::LEDOff(){
   ble_do_events();
 }
 ////
+//SevenSegments
+void iShield::SevenSegmentsSetChar(char myChar){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x08);
+      ble_write(0x01);
+      ble_write(myChar); 
+  }
+
+  ble_do_events();
+}
+////
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }
