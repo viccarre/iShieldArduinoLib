@@ -18,16 +18,11 @@ void loop()
 {
 
 	myiShield.getInbox();
-	Serial.print("Slider A value: ");
-	Serial.println(myiShield.getSliderAValue());
-	Serial.print("Slider B value: ");
-	Serial.println(myiShield.getSliderBValue());
-	Serial.print("Slider C value: ");
-	Serial.println(myiShield.getSliderCValue());
-	Serial.print("Slider D value: ");
-	Serial.println(myiShield.getSliderDValue());
-	Serial.print("Slider E value: ");
-	Serial.println(myiShield.getSliderEValue());
-	delay(200); 
+	Serial.print("Red Value:");
+	Serial.println(myiShield.getRedValue());
+	Serial.print("Green Value:");
+	Serial.println(myiShield.getGreenValue());
+	Serial.print("Blue Value:");
+	Serial.println(myiShield.getBlueValue());
 	
 }

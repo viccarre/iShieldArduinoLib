@@ -1,6 +1,10 @@
 #include "iShield.h"
 
-iShield::iShield(){};
+iShield::iShield(){
+	RedValue = 0x00;
+	GreenValue = 0x00;
+	BlueValue = 0x00;
+};
 
 /* iShield Methods*/
 
@@ -33,7 +37,7 @@ void iShield::getInbox(){
 		break;
 			case 0x04:
 			//Call the process Input for RGB
-			//rgb.processIncomingData(data1, data2);
+			RGBProcessIncomingData(data1, data2);
 		break;
 			case 0x05:
 			//Call the process Input for gamepad
@@ -320,6 +324,36 @@ short iShield::getSliderEValue(){
 	return sliderEValue;
 }
 ///////////
+
+//RGB
+void iShield::RGBProcessIncomingData(int data1,int data2){
+	
+	switch(data1){
+			case 0x01://Request from Color Red
+			RedValue = data2;
+		break;
+			case 0x02://Request from Color Greeb
+			GreenValue = data2;
+		break;
+			case 0x03://Request from Color Blue
+			BlueValue = data2;
+		break;
+
+	}
+}
+
+int iShield::getRedValue(){
+	return RedValue;
+}
+
+int iShield::getGreenValue(){
+	return GreenValue;
+}
+
+int iShield::getBlueValue(){
+	return BlueValue;
+}
+///
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }

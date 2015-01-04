@@ -12,7 +12,7 @@
 //#include "buttonSwitches.h"
 //#include "keypad.h"
 //#include "sliders.h"
-#include "RGB.h"
+//#include "RGB.h"
 #include "gamepad.h"
 #include "thermometer.h"
 #include "LED.h"
@@ -30,7 +30,7 @@ public:
 	//switches Switches;
 	//keypad Keypad;
 	//sliders Sliders;
-	RGB rgb;
+	//RGB rgb;
 	gamepad Gamepad;
 	thermometer Thermometer;
 	LED led;
@@ -68,6 +68,12 @@ public:
 	short getSliderCValue();
 	short getSliderDValue();
 	short getSliderEValue();
+	//RGB
+	void RGBProcessIncomingData(int data1, int data2);
+	int getRedValue();
+	int getGreenValue();
+	int getBlueValue();
+	
 
 private:
 	
@@ -94,6 +100,10 @@ private:
 	short sliderCValue;
 	short sliderDValue;
 	short sliderEValue;
+	//RGB
+	int RedValue;
+	int GreenValue;
+	int BlueValue;
 	//Console
 	String messageIn;
 };
