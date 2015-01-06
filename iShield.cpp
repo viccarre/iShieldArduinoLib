@@ -12,6 +12,9 @@ iShield::iShield(){
 	b = false;
 	x = false;
 	y = false;
+	XAxis = 0x00;
+	YAxis = 0x00;
+	ZAxis = 0x00;
 };
 
 /* iShield Methods*/
@@ -51,7 +54,7 @@ void iShield::getInbox(){
 		break;
 			case 0x0A:
 			//Call the process Input for accelerometer
-			//Accelerometer.processIncomingData(data1, data2);
+			accelerometerProcessIncomingData(data1, data2);
 		break;
 	}
 	
@@ -583,6 +586,34 @@ void iShield::SetSignal5(char myValue){
 	
 }
 ///
+
+//Accelerometer
+void iShield::accelerometerProcessIncomingData(char data1, char data2){
+	
+	switch(data1){
+			case 0x01:
+				XAxis = data2;
+		break;
+			case 0x02:
+				YAxis = data2;
+		break;
+			case 0x03:
+				ZAxis = data2;
+		break;
+	}
+	
+}
+
+short iShield::getXAxis(){
+	return XAxis;
+}
+short iShield::getYAxis(){
+	return YAxis;
+}
+short iShield::getZAxis(){
+	return ZAxis;
+}
+////
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }
@@ -603,8 +634,3 @@ void iShield::writeConsole(String message){
 
   	ble_do_events();
 }
-
-
-
-
-

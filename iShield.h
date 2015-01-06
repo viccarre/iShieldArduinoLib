@@ -8,16 +8,12 @@
 #include <Nordic_nRF8001.h>
 #include <RBL_nRF8001.h>
 
-
-#include "accelerometer.h"
-
 class iShield{
 	
 public:
 	iShield();
 	void getInbox();
 	char getOutbox();
-	accelerometer Accelerometer;
 	void readConsole();
 	void printDataConsole();
 	void writeConsole(String message);
@@ -79,6 +75,11 @@ public:
 	void SetSignal3(char myValue);
 	void SetSignal4(char myValue);
 	void SetSignal5(char myValue);
+	//Accelerometer
+	void accelerometerProcessIncomingData(char data1, char data2);
+	short getXAxis();
+	short getYAxis();
+	short getZAxis();
 	
 	
 
@@ -120,6 +121,10 @@ private:
 	bool b;
 	bool x;
 	bool y;
+	//Accelerometer
+	short XAxis;
+	short YAxis;
+	short ZAxis;
 
 	//Console
 	String messageIn;
