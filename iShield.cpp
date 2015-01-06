@@ -186,20 +186,6 @@ bool iShield::isSwitch5On(){
 bool iShield::isSwitch6On(){
 	return switch6;
 }
-//////////////////
-
-void iShield::readConsole(){
-	
-	ble_do_events();
-	if ( ble_available() )
-  {	
-  	messageIn = "";
-    while ( ble_available() )
-    {
-		messageIn = messageIn + (char)(ble_read());
-    }
-  }
-}
 
 //Keypad Methods
 
@@ -614,9 +600,11 @@ short iShield::getZAxis(){
 	return ZAxis;
 }
 ////
-void iShield::printDataConsole(){
-    Serial.println(messageIn);
+String iShield::printDataConsole(){
+    //Serial.println(messageIn);
+    return messageIn;
 }
+
 
 void iShield::writeConsole(String message){
 
@@ -634,3 +622,17 @@ void iShield::writeConsole(String message){
 
   	ble_do_events();
 }
+
+void iShield::readConsole(){
+	
+	ble_do_events();
+	if ( ble_available() )
+  {	
+  	messageIn = "";
+    while ( ble_available() )
+    {
+		messageIn = messageIn + (char)(ble_read());
+    }
+  }
+}
+

@@ -15,7 +15,7 @@ public:
 	void getInbox();
 	char getOutbox();
 	void readConsole();
-	void printDataConsole();
+	String printDataConsole();
 	void writeConsole(String message);
 	
 	//Buttons

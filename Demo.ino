@@ -1,26 +1,29 @@
-#ifndef accelerometer_h
-#define accelerometer_h
-
-#include <Arduino.h>
 #include <boards.h>
 #include "Boards.h"
 #include <SPI.h>
 #include <Nordic_nRF8001.h>
 #include <RBL_nRF8001.h>
+#include "iShield.h"
 
-class accelerometer {
+iShield myiShield;
+	
+void setup()
+{
+  	// Init. and start BLE library.
+	ble_begin();
+  	Serial.begin(9600); 
+}
 
-public:
-	accelerometer();
-	void processIncomingData(char data1, char data2);
-	short getXAxis();
-	short getYAxis();
-	short getZAxis();
-
-private:
-	short XAxis;
-	short YAxis;
-	short ZAxis;
-};
-
-#endif
+void loop()
+{
+	myiShield.readConsole();
+	String mensaje = myiShield.printDataConsole();
+	Serial.println(mensaje);
+	myiShield.writeConsole("Hola");
+	delay(1000);
+	myiShield.writeConsole("Hola1");
+	delay(1000);
+	myiShield.writeConsole("Hola2");
+	delay(1000);
+	
+}
