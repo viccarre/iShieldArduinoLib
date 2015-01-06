@@ -504,6 +504,85 @@ void iShield::SevenSegmentsSetChar(char myChar){
   ble_do_events();
 }
 ////
+//Analog Signals
+void iShield::SetSignal0(char myValue){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x09);
+      ble_write(0x00);
+      ble_write(myValue); 
+  }
+
+  ble_do_events();
+	
+}
+
+void iShield::SetSignal1(char myValue){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x09);
+      ble_write(0x01);
+      ble_write(myValue); 
+  }
+
+  ble_do_events();
+	
+}
+
+void iShield::SetSignal2(char myValue){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x09);
+      ble_write(0x02);
+      ble_write(myValue); 
+  }
+
+  ble_do_events();
+	
+}
+
+void iShield::SetSignal3(char myValue){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x09);
+      ble_write(0x03);
+      ble_write(myValue); 
+  }
+
+  ble_do_events();
+	
+}
+
+void iShield::SetSignal4(char myValue){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x09);
+      ble_write(0x04);
+      ble_write(myValue); 
+  }
+
+  ble_do_events();
+	
+}
+
+void iShield::SetSignal5(char myValue){
+	
+	if ( ble_connected() )
+  {
+      ble_write(0x09);
+      ble_write(0x05);
+      ble_write(myValue); 
+  }
+
+  ble_do_events();
+	
+}
+///
 void iShield::printDataConsole(){
     Serial.println(messageIn);
 }

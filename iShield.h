@@ -8,7 +8,7 @@
 #include <Nordic_nRF8001.h>
 #include <RBL_nRF8001.h>
 
-#include "analogSignals.h"
+
 #include "accelerometer.h"
 
 class iShield{
@@ -17,7 +17,6 @@ public:
 	iShield();
 	void getInbox();
 	char getOutbox();
-	analogSignals AnalogSignals;
 	accelerometer Accelerometer;
 	void readConsole();
 	void printDataConsole();
@@ -73,6 +72,14 @@ public:
 	void LEDOff();
 	//SevenSegments
 	void SevenSegmentsSetChar(char myChar);
+	//Analog Signals
+	void SetSignal0(char myValue);
+	void SetSignal1(char myValue);
+	void SetSignal2(char myValue);
+	void SetSignal3(char myValue);
+	void SetSignal4(char myValue);
+	void SetSignal5(char myValue);
+	
 	
 
 private:
