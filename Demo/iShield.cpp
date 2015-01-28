@@ -600,8 +600,7 @@ short iShield::getZAxis(){
 	return ZAxis;
 }
 ////
-String iShield::printDataConsole(){
-    //Serial.println(messageIn);
+String iShield::incomingData(){
     return messageIn;
 }
 
@@ -635,4 +634,5 @@ void iShield::readConsole(){
     }
   }
 }
+
 
