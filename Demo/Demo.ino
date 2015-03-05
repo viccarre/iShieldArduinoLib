@@ -16,7 +16,7 @@ void loop()
 {
         myiShield.getInbox();
 
-    //Buttons
+        //Buttons
       if(myiShield.isButton1Pressed()){
     Serial.println("1, button pressed");
     }
