@@ -9,7 +9,7 @@
 #include <RBL_nRF8001.h>
 
 class iShield{
-	
+
 public:
 	iShield();
 	void getInbox();
@@ -17,7 +17,7 @@ public:
 	void readConsole();
 	String incomingData();
 	void writeConsole(String message);
-	
+
 	//Buttons
 	void buttonsProcessIncomingData(char data1, char data2);
 	bool isButton1Pressed();
@@ -80,11 +80,11 @@ public:
 	short getXAxis();
 	short getYAxis();
 	short getZAxis();
-	
-	
+	//Gauge
+	void setGaugeValue(int value);
 
 private:
-	
+
 	//Buttons
 	bool button1;
 	bool button2;
@@ -125,9 +125,9 @@ private:
 	short XAxis;
 	short YAxis;
 	short ZAxis;
-
 	//Console
 	String messageIn;
+
 };
 
 #endif

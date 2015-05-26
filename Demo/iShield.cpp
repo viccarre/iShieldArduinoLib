@@ -20,16 +20,16 @@ iShield::iShield(){
 /* iShield Methods*/
 
 void iShield::getInbox(){
-	
+
 	ble_do_events();
-	
+
 	while(ble_available()){
-		
+
 	// read out command and data
 	byte data0 = ble_read();
 	byte data1 = ble_read();
 	byte data2 = ble_read();
-	
+
 	switch(data0){
 			case 0x01://Request from Button and Switches
 			//Call the process Input for Button and Swithches
@@ -57,13 +57,13 @@ void iShield::getInbox(){
 			accelerometerProcessIncomingData(data1, data2);
 		break;
 	}
-	
+
 	}
-	
+
 }
 /* Buttons Methods*/
 void iShield::buttonsProcessIncomingData(char data1,char data2){
-	
+
 	switch(data1){
 			case 0x01://Request from Button1
 			if(data2 == 0x01)
@@ -102,7 +102,7 @@ void iShield::buttonsProcessIncomingData(char data1,char data2){
 				button6 = false;
 		break;
 	}
-	
+
 }
 bool iShield::isButton1Pressed(){
 	return button1;
@@ -127,7 +127,7 @@ bool iShield::isButton6Pressed(){
 //Switches Methodos
 
 void iShield::switchesProcessIncomingData(char data1, char data2){
-	
+
 	switch(data1){
 			case 0x07://Request from Button1
 			if(data2 == 0x01)
@@ -190,10 +190,10 @@ bool iShield::isSwitch6On(){
 //Keypad Methods
 
 void iShield::keypadProcessIncomingData(char data1, char data2){
-	
+
 	Serial.println(data1);
 	Serial.println(data2);
-	
+
 	switch(data1){
 			case 0x01:
 				currentData = '1';
@@ -260,7 +260,7 @@ void iShield::keypadProcessIncomingData(char data1, char data2){
 				keypadPressed = true;
 		break;
 		}
-	
+
 }
 
 bool iShield::keypadWasPressed(){
@@ -279,7 +279,7 @@ char iShield::getKeypadData(){
 /////////////
 //Sliders Methods
 void iShield::slidersProcessIncomingData(char data1,char data2){
-	
+
 	switch(data1){
 			case 0x01://Request from SliderA
 			sliderAValue = data2;
@@ -322,7 +322,7 @@ short iShield::getSliderEValue(){
 
 //RGB
 void iShield::RGBProcessIncomingData(int data1,int data2){
-	
+
 	switch(data1){
 			case 0x01://Request from Color Red
 			RedValue = data2;
@@ -351,7 +351,7 @@ int iShield::getBlueValue(){
 ///
 //Gamepad
 void iShield::gamePadProcessIncomingData(int data1, int data2){
-	
+
 	switch(data1){
 			case 0x01:
 			if(data2 == 0x01)
@@ -402,7 +402,7 @@ void iShield::gamePadProcessIncomingData(int data1, int data2){
 				y = false;
 		break;
 	}
-	
+
 }
 
 bool iShield::isUpPressed(){
@@ -437,7 +437,7 @@ void iShield::setTemperature(int temp){
   {
       ble_write(0x06);
       ble_write(0x01);
-      ble_write((char)temp); 
+      ble_write((char)temp);
   }
 
   ble_do_events();
@@ -448,7 +448,7 @@ void iShield::setHumidity(int hum){
   {
       ble_write(0x06);
       ble_write(0x02);
-      ble_write((char)hum); 
+      ble_write((char)hum);
   }
 
   ble_do_events();
@@ -457,24 +457,24 @@ void iShield::setHumidity(int hum){
 
 //LED
 void iShield::LEDOn(){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x07);
       ble_write(0x01);
-      ble_write(0x01); 
+      ble_write(0x01);
   }
 
   ble_do_events();
 }
 
 void iShield::LEDOff(){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x07);
       ble_write(0x01);
-      ble_write(0x00); 
+      ble_write(0x00);
   }
 
   ble_do_events();
@@ -482,12 +482,12 @@ void iShield::LEDOff(){
 ////
 //SevenSegments
 void iShield::SevenSegmentsSetChar(char myChar){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x08);
       ble_write(0x01);
-      ble_write(myChar); 
+      ble_write(myChar);
   }
 
   ble_do_events();
@@ -495,87 +495,87 @@ void iShield::SevenSegmentsSetChar(char myChar){
 ////
 //Analog Signals
 void iShield::SetSignal0(char myValue){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x09);
       ble_write(0x00);
-      ble_write(myValue); 
+      ble_write(myValue);
   }
 
   ble_do_events();
-	
+
 }
 
 void iShield::SetSignal1(char myValue){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x09);
       ble_write(0x01);
-      ble_write(myValue); 
+      ble_write(myValue);
   }
 
   ble_do_events();
-	
+
 }
 
 void iShield::SetSignal2(char myValue){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x09);
       ble_write(0x02);
-      ble_write(myValue); 
+      ble_write(myValue);
   }
 
   ble_do_events();
-	
+
 }
 
 void iShield::SetSignal3(char myValue){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x09);
       ble_write(0x03);
-      ble_write(myValue); 
+      ble_write(myValue);
   }
 
   ble_do_events();
-	
+
 }
 
 void iShield::SetSignal4(char myValue){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x09);
       ble_write(0x04);
-      ble_write(myValue); 
+      ble_write(myValue);
   }
 
   ble_do_events();
-	
+
 }
 
 void iShield::SetSignal5(char myValue){
-	
+
 	if ( ble_connected() )
   {
       ble_write(0x09);
       ble_write(0x05);
-      ble_write(myValue); 
+      ble_write(myValue);
   }
 
   ble_do_events();
-	
+
 }
 ///
 
 //Accelerometer
 void iShield::accelerometerProcessIncomingData(char data1, char data2){
-	
+
 	switch(data1){
 			case 0x01:
 				XAxis = data2;
@@ -587,7 +587,7 @@ void iShield::accelerometerProcessIncomingData(char data1, char data2){
 				ZAxis = data2;
 		break;
 	}
-	
+
 }
 
 short iShield::getXAxis(){
@@ -611,7 +611,7 @@ void iShield::writeConsole(String message){
 	char tab2[16];
 	strncpy(tab2, tmp.c_str(), sizeof(tab2));
 	tab2[sizeof(tab2) - 1] = 0;
-	
+
 	if (ble_connected())
   	{
   		for(int i=0; i<sizeof(tab2);i++){
@@ -623,10 +623,10 @@ void iShield::writeConsole(String message){
 }
 
 void iShield::readConsole(){
-	
+
 	ble_do_events();
 	if ( ble_available() )
-  {	
+  {
   	messageIn = "";
     while ( ble_available() )
     {
@@ -635,4 +635,16 @@ void iShield::readConsole(){
   }
 }
 
+//Gauge
+void iShield::setGaugeValue(int value){
 
+	if ( ble_connected() )
+  {
+      ble_write(0x0C);
+      ble_write(0x01);
+      ble_write(value);
+      Serial.print("value: ");
+      Serial.println(value);
+  }
+  ble_do_events();
+}
