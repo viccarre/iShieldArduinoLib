@@ -23,18 +23,22 @@ void setup()
 {
     // Init. and start BLE library.
   ble_begin();
-    Serial.begin(9600); 
+    Serial.begin(9600);
     ble_set_name("BLEShield");
 }
 
 void loop()
 {
-  //val = (analogRead(potPin)/4);
-  //Serial.println(val);
+  val = (analogRead(potPin)/4);
+  Serial.println(val);
+  myiShield.setGaugeValue(val);
+
+  //Also try this code to test the Gauge in your iOS Device
+  */
   for(int i = 0;i<256;i++){
     myiShield.setGaugeValue(i);
     delay(100);
   }
-  //myiShield.setGaugeValue(val);
+  /*
 
 }
