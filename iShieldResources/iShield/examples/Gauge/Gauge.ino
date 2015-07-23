@@ -7,38 +7,26 @@
   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 */
-
-//"services.h/spi.h/boards.h" is needed in every new project
-#include <SPI.h>
 #include <boards.h>
+#include <SPI.h>
 #include <RBL_nRF8001.h>
-#include <iShield.h>
-
+#include "iShield.h"
 
 iShield myiShield;
-int potPin = 0;
-int val;
 
 void setup()
 {
     // Init. and start BLE library.
-  ble_begin();
-    Serial.begin(9600);
+    ble_begin();
+    Serial.begin(9600); 
     ble_set_name("BLEShield");
 }
 
 void loop()
 {
-  val = (analogRead(potPin)/4);
-  Serial.println(val);
-  myiShield.setGaugeValue(val);
-
-  //Also try this code to test the Gauge in your iOS Device
-  */
   for(int i = 0;i<256;i++){
-    myiShield.setGaugeValue(i);
-    delay(100);
+	myiShield.setGaugeValue(i);
+	delay(100);
   }
-  /*
 
 }
