@@ -23,9 +23,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 /* Store the setup for the nRF8001 in the flash of the AVR to save on RAM */
 static hal_aci_data_t setup_msgs[NB_SETUP_MESSAGES] PROGMEM = SETUP_MESSAGES_CONTENT;
+//static const hal_aci_data_t setup_msgs[NB_SETUP_MESSAGES] PROGMEM = SETUP_MESSAGES_CONTENT;
 
 #if defined(BLEND_MICRO)
 static char device_name[11] = "BlendMicro";
+#elif defined(BLEND)
+static char device_name[11] = "Blend     ";
 #else
 static char device_name[11] = "BLE Shield";
 #endif
@@ -110,7 +113,8 @@ void ble_begin()
         aci_state.aci_setup_info.services_pipe_type_mapping = NULL;
     }
     aci_state.aci_setup_info.number_of_pipes    = NUMBER_OF_PIPES;
-    aci_state.aci_setup_info.setup_msgs         = (hal_aci_data_t*)setup_msgs;
+    //aci_state.aci_setup_info.setup_msgs         = setup_msgs;
+    aci_state.aci_setup_info.setup_msgs = (hal_aci_data_t*)setup_msgs;
     aci_state.aci_setup_info.num_setup_msgs     = NB_SETUP_MESSAGES;
 
     /*
@@ -150,7 +154,7 @@ void ble_begin()
 static volatile byte ack = 0;
 
 void ble_write(unsigned char data)
-{
+{	    
     if(tx_buffer_len == MAX_TX_BUFF)
     {
             return;
@@ -190,13 +194,13 @@ unsigned char ble_connected()
 }
 
 void ble_set_name(char *name)
-{
+{       
     unsigned char len=0;
-
+    
     len = strlen(name);
     if(len > 10)
     {
-        Serial.print("the new name is too long");
+        Serial.print("the new name is too long");        
     }
     else
     {
@@ -247,7 +251,7 @@ static void process_events()
                         else
                         {
                             lib_aci_set_local_data(&aci_state, PIPE_GAP_DEVICE_NAME_SET , (uint8_t *)&device_name , strlen(device_name));
-                            lib_aci_connect(180/* in seconds */, 0x0050 /* advertising interval 50ms*/);
+                            lib_aci_connect(0/* in seconds */, 0x0050 /* advertising interval 50ms*/);
                             Serial.println(F("Advertising started"));
                         }
                         break;
@@ -301,7 +305,7 @@ static void process_events()
                 is_connected = 0;
                 ack = 1;
                 Serial.println(F("Evt Disconnected/Advertising timed out"));
-                lib_aci_connect(30/* in seconds */, 0x0050 /* advertising interval 100ms*/);
+                lib_aci_connect(0/* in seconds */, 0x0050 /* advertising interval 100ms*/);
                 Serial.println(F("Advertising started"));
                 break;
 
@@ -362,7 +366,7 @@ static void process_events()
                   Serial.write(aci_evt->params.hw_error.file_name[counter]); //uint8_t file_name[20];
                 }
                 Serial.println();
-                lib_aci_connect(180/* in seconds */, 0x0050 /* advertising interval 50ms*/);
+                lib_aci_connect(0/* in seconds */, 0x0050 /* advertising interval 50ms*/);
                 Serial.println(F("Advertising started"));
                 break;
         }
@@ -444,3 +448,4 @@ void ble_do_events()
 
     SPCR = spi_old;
 }
+
